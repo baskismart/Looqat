@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+
+import React, { useState, useEffect } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
 const Logo: React.FC = () => (
@@ -15,7 +16,20 @@ const Logo: React.FC = () => (
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const { user, profile } = useAuth();
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const navLinkClasses = ({ isActive }: { isActive: boolean }) =>
     `px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 ${
@@ -27,8 +41,14 @@ const Header: React.FC = () => {
       isActive ? 'bg-[#0B0B0B] text-[#ffbb98]' : 'text-[#F5F5F5] hover:bg-[#1a1a1a]'
     }`;
 
+  const navClasses = `sticky top-0 z-50 transition-all duration-300 ${
+    (!isHomePage || isScrolled || isOpen) 
+      ? 'bg-[#0B0B0B]/80 backdrop-blur-sm shadow-lg shadow-black/50' 
+      : 'bg-transparent shadow-none'
+  }`;
+
   return (
-    <nav className="bg-[#0B0B0B]/80 backdrop-blur-sm sticky top-0 z-50 shadow-lg shadow-black/50">
+    <nav className={navClasses}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <div className="flex-shrink-0">
@@ -41,6 +61,7 @@ const Header: React.FC = () => {
               <NavLink to="/" className={navLinkClasses}>Home</NavLink>
               <NavLink to="/product" className={navLinkClasses}>Product</NavLink>
               <NavLink to="/blog" className={navLinkClasses}>Blog</NavLink>
+              <NavLink to="/about" className={navLinkClasses}>About</NavLink>
               <NavLink to="/contact" className={navLinkClasses}>Contact</NavLink>
             </div>
           </div>
@@ -101,6 +122,7 @@ const Header: React.FC = () => {
             <NavLink to="/" className={mobileNavLinkClasses} onClick={() => setIsOpen(false)}>Home</NavLink>
             <NavLink to="/product" className={mobileNavLinkClasses} onClick={() => setIsOpen(false)}>Product</NavLink>
             <NavLink to="/blog" className={mobileNavLinkClasses} onClick={() => setIsOpen(false)}>Blog</NavLink>
+            <NavLink to="/about" className={mobileNavLinkClasses} onClick={() => setIsOpen(false)}>About</NavLink>
             <NavLink to="/contact" className={mobileNavLinkClasses} onClick={() => setIsOpen(false)}>Contact</NavLink>
             <div className="border-t border-[#333333] my-2"></div>
             {user ? (

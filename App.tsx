@@ -10,6 +10,7 @@ import BlogPostPage from './pages/BlogPostPage';
 import ContactPage from './pages/ContactPage';
 import SignInPage from './pages/SignInPage';
 import SignUpPage from './pages/SignUpPage';
+import AboutPage from './pages/AboutPage';
 import { AuthProvider } from './contexts/AuthContext';
 
 // A helper component to scroll to top on route change
@@ -40,6 +41,7 @@ const App: React.FC = () => {
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/signin" element={<SignInPage />} />
               <Route path="/signup" element={<SignUpPage />} />
+              <Route path="/about" element={<AboutPage />} />
             </Routes>
           </main>
           <Footer />
