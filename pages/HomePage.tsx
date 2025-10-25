@@ -23,7 +23,7 @@ const HomePage: React.FC = () => {
         style={{ backgroundImage: `url('https://i.pinimg.com/1200x/0c/52/ae/0c52ae9947137589b5574a0a515bc451.jpg')` }}
         aria-label="Woman holding LOOQAT travel quencher on a sunny beach"
       >
-        <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
+        <div className="absolute inset-0 bg-black opacity-70 z-10"></div>
         <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-xl text-left">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-[#F5F5F5] tracking-tight">
