@@ -6,7 +6,6 @@ const productImages = [
     "https://m.media-amazon.com/images/I/71haP0VsZDL._SL1500_.jpg",
     "https://m.media-amazon.com/images/I/71jp58kMwYL._SL1500_.jpg",
     "https://m.media-amazon.com/images/I/71auSmGPByL._SL1500_.jpg",
-    "https://m.media-amazon.com/images/I/81UWYWEVEKL._SL1500_.jpg",
     "https://m.media-amazon.com/images/I/81UWYWEVEKL._SL1500_.jpg"
 ];
 
@@ -20,22 +19,30 @@ const ProductPage: React.FC = () => {
                     {/* Image gallery */}
                     <div className="flex flex-col-reverse">
                         {/* Image selector */}
-                        <div className="hidden mt-6 w-full max-w-2xl mx-auto sm:block lg:max-w-none">
-                            <div className="grid grid-cols-4 gap-6" aria-orientation="horizontal" role="tablist">
-                                {productImages.map((image, index) => (
-                                    <button key={index} onClick={() => setMainImage(image)} className={`relative h-24 bg-white rounded-md flex items-center justify-center text-sm font-medium uppercase text-gray-900 cursor-pointer hover:bg-gray-50 focus:outline-none focus:ring focus:ring-offset-4 focus:ring-[#ffbb98] ${mainImage === image ? 'ring-2 ring-offset-2 ring-[#ffbb98]' : ''}`} role="tab">
-                                        <span className="sr-only">Image {index + 1}</span>
-                                        <span className="absolute inset-0 rounded-md overflow-hidden">
-                                            <img src={image} alt="" className="w-full h-full object-center object-cover" />
-                                        </span>
-                                    </button>
-                                ))}
+                        <div className="mt-6 w-full max-w-2xl mx-auto sm:max-w-none">
+                            <div className="overflow-x-auto pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 sm:overflow-visible">
+                                <div className="flex space-x-6 sm:grid sm:grid-cols-4 sm:gap-6 sm:space-x-0" aria-orientation="horizontal" role="tablist">
+                                    {productImages.map((image, index) => (
+                                        <button
+                                            key={index}
+                                            onClick={() => setMainImage(image)}
+                                            className={`relative h-24 w-24 flex-shrink-0 bg-white rounded-md flex items-center justify-center text-sm font-medium uppercase text-gray-900 cursor-pointer hover:bg-gray-50 focus:outline-none focus:ring focus:ring-offset-4 focus:ring-[#ffbb98] sm:w-auto ${mainImage === image ? 'ring-2 ring-offset-2 ring-[#ffbb98]' : ''}`}
+                                            role="tab"
+                                        >
+                                            <span className="sr-only">Image {index + 1}</span>
+                                            <span className="absolute inset-0 rounded-md overflow-hidden">
+                                                <img src={image} alt={`Thumbnail of LOOQAT Quencher ${index + 1}`} className="w-full h-full object-center object-cover" />
+                                            </span>
+                                        </button>
+                                    ))}
+                                </div>
                             </div>
                         </div>
 
+
                         <div className="w-full aspect-w-1 aspect-h-1">
                              <div className="rounded-lg bg-[#1a1a1a] overflow-hidden">
-                                <img src={mainImage} alt="Main product" className="w-full h-full object-center object-cover transition-transform duration-300 hover:scale-105" />
+                                <img src={mainImage} alt="LOOQAT Premium Black Travel Quencher" className="w-full h-full object-center object-cover transition-transform duration-300 hover:scale-105" />
                             </div>
                         </div>
                     </div>
@@ -46,7 +53,7 @@ const ProductPage: React.FC = () => {
 
                         <div className="mt-3">
                             <h2 className="sr-only">Product information</h2>
-                            <p className="text-3xl text-[#F5F5F5]">₹1,248</p>
+                            <p className="text-3xl text-[#F5F5F5]">₹2,499</p>
                         </div>
 
                         <div className="mt-6">
