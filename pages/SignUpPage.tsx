@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { supabase } from '../supabaseClient';
 
 const SignUpPage: React.FC = () => {
+  const navigate = useNavigate();
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -31,17 +32,21 @@ const SignUpPage: React.FC = () => {
 
       if (signUpError) throw signUpError;
       
-      // If sign up is successful, update the newly created profile with the full name
+      // If sign up is successful, update the newly created profile with the full name and email
       if (data.user) {
         const { error: profileError } = await supabase
           .from('profiles')
-          .update({ full_name: fullName })
+          .update({ full_name: fullName, email: email })
           .eq('id', data.user.id);
         
         if (profileError) throw profileError;
       }
 
-      setSuccess("Success! Please check your email for a confirmation link.");
+      setSuccess("Welcome to the adventurous community");
+
+      setTimeout(() => {
+        navigate('/');
+      }, 2000);
 
     } catch (error: any) {
       setError(error.error_description || error.message);
@@ -136,10 +141,10 @@ const SignUpPage: React.FC = () => {
           <div>
             <button
               type="submit"
-              disabled={loading}
+              disabled={loading || !!success}
               className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-[#0B0B0B] bg-[#ffbb98] hover:bg-[#f8a87e] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#1a1a1a] focus:ring-[#ffbb98] disabled:opacity-50"
             >
-              {loading ? 'Creating Account...' : 'Create Account'}
+              {loading ? 'Creating Account...' : success ? 'Redirecting...' : 'Create Account'}
             </button>
           </div>
         </form>

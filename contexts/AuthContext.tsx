@@ -6,6 +6,7 @@ interface Profile {
   username: string | null;
   full_name: string | null;
   avatar_url: string | null;
+  email: string | null;
 }
 
 interface AuthContextType {
@@ -38,7 +39,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       if (currentUser) {
         const { data: profileData } = await supabase
           .from('profiles')
-          .select('username, full_name, avatar_url')
+          .select('username, full_name, avatar_url, email')
           .eq('id', currentUser.id)
           .single();
         setProfile(profileData);
@@ -56,7 +57,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       if (currentUser) {
          const { data: profileData } = await supabase
           .from('profiles')
-          .select('username, full_name, avatar_url')
+          .select('username, full_name, avatar_url, email')
           .eq('id', currentUser.id)
           .single();
         setProfile(profileData);
