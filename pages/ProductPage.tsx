@@ -6,6 +6,7 @@ const productImages = [
     "https://m.media-amazon.com/images/I/71haP0VsZDL._SL1500_.jpg",
     "https://m.media-amazon.com/images/I/71jp58kMwYL._SL1500_.jpg",
     "https://m.media-amazon.com/images/I/71auSmGPByL._SL1500_.jpg",
+    "https://m.media-amazon.com/images/I/81UWYWEVEKL._SL1500_.jpg",
     "https://m.media-amazon.com/images/I/81UWYWEVEKL._SL1500_.jpg"
 ];
 
