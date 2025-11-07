@@ -53,7 +53,7 @@ const ProductPage: React.FC = () => {
 
                         <div className="mt-3">
                             <h2 className="sr-only">Product information</h2>
-                            <p className="text-3xl text-[#F5F5F5]">₹2,499</p>
+                            <p className="text-3xl text-[#F5F5F5]">₹1,248</p>
                         </div>
 
                         <div className="mt-6">
