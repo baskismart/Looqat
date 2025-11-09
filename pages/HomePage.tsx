@@ -20,7 +20,7 @@ const HomePage: React.FC = () => {
       {/* Hero Section */}
       <section
         className="relative min-h-screen flex items-center overflow-hidden bg-cover bg-center"
-        style={{ backgroundImage: `url('Images/hero-image bs.jpg')` }}
+        style={{ backgroundImage: `url('/Images/hero-image bs.jpg')` }}
         aria-label="Men standing in the cliff mountain"
       >
         <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
