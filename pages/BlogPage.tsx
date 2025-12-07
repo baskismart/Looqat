@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 export interface Post {
   id: number;
+  slug: string; 
   title: string;
   category: string;
   description: string;
@@ -16,6 +17,7 @@ export interface Post {
 export const BLOG_POSTS: Post[] = [
     {
         id: 1,
+        slug: "hydration-hacks-for-gym-rats",
         title: "Hydration Hacks for Gym Rats",
         category: "Performance",
         description: "Maximize your gains by optimizing your water intake before, during, and after training.",
@@ -72,6 +74,7 @@ export const BLOG_POSTS: Post[] = [
     },
     {
         id: 2,
+        slug: "why-staying-cool-boosts-workout-performance", 
         title: "Why Staying Cool Boosts Workout Performance",
         category: "Science",
         description: "The science behind cold water and how it helps regulate body temperature during intense sets.",
@@ -134,6 +137,7 @@ export const BLOG_POSTS: Post[] = [
     },
     {
         id: 3,
+        slug: "the-perfect-gym-accessory-you-didnt-know-you-needed",
         title: "The Perfect Gym Accessory You Didn’t Know You Needed",
         category: "Lifestyle",
         description: "Upgrade your gym aesthetics and utility with the one tool you use every single session.",
@@ -207,7 +211,7 @@ const BlogPage: React.FC = () => {
             <div className="grid gap-16 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-12">
             {BLOG_POSTS.map((post) => (
                 <div key={post.title} className="flex flex-col justify-between rounded-sm overflow-hidden bg-[#121212] border border-gray-900 transition-all duration-300 hover:border-gray-700 hover:scale-[1.02] group shadow-xl">
-                <Link to={`/blog/${post.id}`} className="block h-full flex flex-col">
+                <Link to={`/blog/${post.slug}`} className="block h-full flex flex-col">
                     <div className="flex-shrink-0 relative overflow-hidden h-64">
                         <div className="absolute top-4 left-4 bg-black/80 backdrop-blur-sm px-3 py-1 z-10 border border-white/10">
                             <span className="text-[10px] font-bold text-white uppercase tracking-widest">{post.category}</span>
