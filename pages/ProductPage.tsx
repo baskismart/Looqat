@@ -210,12 +210,12 @@ const ProductPage: React.FC = () => {
                 </div>
 
                 {/* Immersive Feature Section */}
-                <div className="mt-24 mb-24 relative overflow-hidden h-[500px] flex items-center">
+                <div className="mt-24 mb-24 relative overflow-hidden h-[500px] flex items-center bg-black">
                      <div className="absolute inset-0">
                         <img 
                             src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop" 
                             alt="Gym Background" 
-                            className="w-full h-full object-cover filter brightness-50 grayscale"
+                            className="w-full h-full object-cover opacity-20 grayscale"
                         />
                      </div>
                      <div className="relative z-10 max-w-7xl mx-auto px-4 w-full">
