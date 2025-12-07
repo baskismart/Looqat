@@ -36,24 +36,30 @@ const ContactPage: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#0B0B0B] py-16 px-4 sm:px-6 lg:px-8">
-      <div className="relative max-w-xl mx-auto">
-        <div className="text-center">
-          <h2 className="text-3xl font-extrabold tracking-tight text-[#F5F5F5] sm:text-4xl">Contact Us</h2>
-          <p className="mt-4 text-lg leading-6 text-[#a0a0a0]">
+    <div className="bg-black py-24 px-4 sm:px-6 lg:px-8 min-h-[80vh] flex items-center">
+      <div className="relative max-w-xl mx-auto w-full">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-black tracking-tighter text-white uppercase italic sm:text-5xl">Contact Us</h2>
+          <p className="mt-4 text-lg text-gray-400 font-body">
             Have a question or feedback? We'd love to hear from you.
           </p>
         </div>
-        <div className="mt-12">
+        <div className="bg-[#050505] p-8 sm:p-10 border border-gray-900 shadow-2xl">
           {submitted ? (
-             <div className="text-center p-8 bg-[#1a1a1a] rounded-lg">
-                <h3 className="text-2xl font-bold text-[#ffbb98]">Thank You!</h3>
-                <p className="mt-2 text-[#F5F5F5]">Your message has been sent. We'll get back to you shortly.</p>
+             <div className="text-center py-10">
+                <h3 className="text-2xl font-black text-white uppercase tracking-wide mb-4">Message Received</h3>
+                <p className="text-gray-400 mb-8 font-body">We will get back to you shortly.</p>
+                <button 
+                  onClick={() => setSubmitted(false)}
+                  className="text-sm font-bold uppercase tracking-widest text-white border-b border-white hover:text-gray-300 hover:border-gray-300 transition-colors pb-1"
+                >
+                  Send Another Message
+                </button>
              </div>
           ) : (
-            <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="sr-only">Full name</label>
+                <label htmlFor="name" className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Full name</label>
                 <input
                   type="text"
                   name="name"
@@ -62,12 +68,12 @@ const ContactPage: React.FC = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="block w-full shadow-sm py-3 px-4 placeholder-[#a0a0a0] text-[#F5F5F5] bg-[#1a1a1a] border-[#333333] rounded-md focus:ring-[#ffbb98] focus:border-[#ffbb98]"
-                  placeholder="Full name"
+                  className="block w-full bg-[#111] border border-gray-800 text-white py-3 px-4 focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-colors duration-200 placeholder-gray-600 sm:text-sm"
+                  placeholder="ENTER YOUR NAME"
                 />
               </div>
               <div>
-                <label htmlFor="email" className="sr-only">Email</label>
+                <label htmlFor="email" className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Email</label>
                 <input
                   id="email"
                   name="email"
@@ -76,12 +82,12 @@ const ContactPage: React.FC = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="block w-full shadow-sm py-3 px-4 placeholder-[#a0a0a0] text-[#F5F5F5] bg-[#1a1a1a] border-[#333333] rounded-md focus:ring-[#ffbb98] focus:border-[#ffbb98]"
-                  placeholder="Email"
+                  className="block w-full bg-[#111] border border-gray-800 text-white py-3 px-4 focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-colors duration-200 placeholder-gray-600 sm:text-sm"
+                  placeholder="ENTER YOUR EMAIL"
                 />
               </div>
               <div>
-                <label htmlFor="message" className="sr-only">Message</label>
+                <label htmlFor="message" className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Message</label>
                 <textarea
                   id="message"
                   name="message"
@@ -89,18 +95,18 @@ const ContactPage: React.FC = () => {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  className="block w-full shadow-sm py-3 px-4 placeholder-[#a0a0a0] text-[#F5F5F5] bg-[#1a1a1a] border-[#333333] rounded-md focus:ring-[#ffbb98] focus:border-[#ffbb98]"
-                  placeholder="Message"
+                  className="block w-full bg-[#111] border border-gray-800 text-white py-3 px-4 focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-colors duration-200 placeholder-gray-600 sm:text-sm resize-none"
+                  placeholder="HOW CAN WE HELP?"
                 ></textarea>
               </div>
 
-               {error && <p className="text-sm text-red-500 text-center">{error}</p>}
+               {error && <p className="text-sm text-red-500 text-center font-bold">{error}</p>}
 
-              <div>
+              <div className="pt-4">
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-[#0B0B0B] bg-[#ffbb98] hover:bg-[#f8a07e] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#0B0B0B] focus:ring-[#ffbb98] disabled:opacity-50"
+                  className="w-full flex justify-center py-4 px-4 border border-transparent text-sm font-black uppercase tracking-[0.2em] text-black bg-white hover:bg-gray-200 focus:outline-none transition-all duration-300 disabled:opacity-50"
                 >
                   {loading ? 'Sending...' : 'Send Message'}
                 </button>
@@ -108,8 +114,8 @@ const ContactPage: React.FC = () => {
             </form>
           )}
         </div>
-        <div className="mt-10 text-center text-[#a0a0a0]">
-            <p>You can also reach us at: <a href="mailto:support@looqat.com" className="font-medium text-[#ffbb98] hover:text-[#f8a87e]">support@looqat.com</a></p>
+        <div className="mt-10 text-center text-gray-500 text-sm">
+            <p>Direct Support: <a href="mailto:support@looqat.com" className="text-white hover:underline font-bold">support@looqat.com</a></p>
         </div>
       </div>
     </div>

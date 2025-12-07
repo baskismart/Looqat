@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { supabase } from '../supabaseClient';
@@ -42,7 +43,7 @@ const SignUpPage: React.FC = () => {
         if (profileError) throw profileError;
       }
 
-      setSuccess("Welcome to the adventurous community");
+      setSuccess("Welcome to the team.");
 
       setTimeout(() => {
         navigate('/');
@@ -56,21 +57,21 @@ const SignUpPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8 bg-[#1a1a1a] p-10 rounded-xl shadow-lg">
-        <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-[#F5F5F5]">Create your account</h2>
-          <p className="mt-2 text-center text-sm text-[#a0a0a0]">
-            Already have an account?{' '}
-            <NavLink to="/signin" className="font-medium text-[#ffbb98] hover:text-[#f8a87e]">
-              Sign in here
+    <div className="min-h-[80vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-black">
+      <div className="max-w-md w-full space-y-8 bg-[#050505] p-10 border border-gray-900 shadow-2xl">
+        <div className="text-center">
+          <h2 className="text-4xl font-black tracking-tighter text-white uppercase italic">Join The Club</h2>
+          <p className="mt-4 text-sm text-gray-500 font-bold uppercase tracking-widest">
+            Already a member?{' '}
+            <NavLink to="/signin" className="text-white hover:text-gray-300 underline decoration-1 underline-offset-4 transition-colors">
+              Sign in
             </NavLink>
           </p>
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleSignUp}>
-          <div className="rounded-md shadow-sm -space-y-px">
+          <div className="space-y-5">
             <div>
-              <label htmlFor="full-name" className="sr-only">
+              <label htmlFor="full-name" className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">
                 Full Name
               </label>
               <input
@@ -81,12 +82,12 @@ const SignUpPage: React.FC = () => {
                 required
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-[#333333] bg-[#0B0B0B] placeholder-[#a0a0a0] text-[#F5F5F5] rounded-t-md focus:outline-none focus:ring-[#ffbb98] focus:border-[#ffbb98] focus:z-10 sm:text-sm"
-                placeholder="Full Name"
+                className="block w-full bg-[#111] border border-gray-800 text-white py-3 px-4 focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-colors duration-200 placeholder-gray-600 sm:text-sm"
+                placeholder="ENTER FULL NAME"
               />
             </div>
             <div>
-              <label htmlFor="email-address" className="sr-only">
+              <label htmlFor="email-address" className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">
                 Email address
               </label>
               <input
@@ -97,12 +98,12 @@ const SignUpPage: React.FC = () => {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-[#333333] bg-[#0B0B0B] placeholder-[#a0a0a0] text-[#F5F5F5] focus:outline-none focus:ring-[#ffbb98] focus:border-[#ffbb98] focus:z-10 sm:text-sm"
-                placeholder="Email address"
+                className="block w-full bg-[#111] border border-gray-800 text-white py-3 px-4 focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-colors duration-200 placeholder-gray-600 sm:text-sm"
+                placeholder="ENTER EMAIL"
               />
             </div>
             <div>
-              <label htmlFor="password" className="sr-only">
+              <label htmlFor="password" className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">
                 Password
               </label>
               <input
@@ -113,12 +114,12 @@ const SignUpPage: React.FC = () => {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-[#333333] bg-[#0B0B0B] placeholder-[#a0a0a0] text-[#F5F5F5] focus:outline-none focus:ring-[#ffbb98] focus:border-[#ffbb98] focus:z-10 sm:text-sm"
-                placeholder="Password"
+                className="block w-full bg-[#111] border border-gray-800 text-white py-3 px-4 focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-colors duration-200 placeholder-gray-600 sm:text-sm"
+                placeholder="CREATE PASSWORD"
               />
             </div>
             <div>
-              <label htmlFor="confirm-password" className="sr-only">
+              <label htmlFor="confirm-password" className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">
                 Confirm Password
               </label>
               <input
@@ -129,20 +130,20 @@ const SignUpPage: React.FC = () => {
                 required
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-[#333333] bg-[#0B0B0B] placeholder-[#a0a0a0] text-[#F5F5F5] rounded-b-md focus:outline-none focus:ring-[#ffbb98] focus:border-[#ffbb98] focus:z-10 sm:text-sm"
-                placeholder="Confirm Password"
+                className="block w-full bg-[#111] border border-gray-800 text-white py-3 px-4 focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-colors duration-200 placeholder-gray-600 sm:text-sm"
+                placeholder="CONFIRM PASSWORD"
               />
             </div>
           </div>
 
-          {error && <p className="text-sm text-red-500 text-center">{error}</p>}
-          {success && <p className="text-sm text-green-500 text-center">{success}</p>}
+          {error && <p className="text-sm text-red-500 text-center font-bold uppercase tracking-wide">{error}</p>}
+          {success && <p className="text-sm text-green-500 text-center font-bold uppercase tracking-wide">{success}</p>}
 
           <div>
             <button
               type="submit"
               disabled={loading || !!success}
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-[#0B0B0B] bg-[#ffbb98] hover:bg-[#f8a87e] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#1a1a1a] focus:ring-[#ffbb98] disabled:opacity-50"
+              className="w-full flex justify-center py-4 px-4 border border-transparent text-sm font-black uppercase tracking-[0.2em] text-black bg-white hover:bg-gray-200 focus:outline-none transition-all duration-300 disabled:opacity-50"
             >
               {loading ? 'Creating Account...' : success ? 'Redirecting...' : 'Create Account'}
             </button>

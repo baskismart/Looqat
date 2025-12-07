@@ -1,16 +1,11 @@
-
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
 const Logo: React.FC = () => (
-  <svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <text x="0" y="30" fontFamily="Poppins, sans-serif" fontSize="30" fontWeight="bold" className="fill-current text-[#F5F5F5]">
-      LOOQ
-      <tspan fill="#ffbb98">A</tspan>
-      T
-    </text>
-  </svg>
+  <div className="text-2xl font-black tracking-tighter text-white uppercase transform skew-x-[-10deg]">
+    LOOQAT
+  </div>
 );
 
 
@@ -32,19 +27,19 @@ const Header: React.FC = () => {
   }, []);
 
   const navLinkClasses = ({ isActive }: { isActive: boolean }) =>
-    `px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 ${
-      isActive ? 'text-[#ffbb98]' : 'text-[#F5F5F5] hover:bg-[#1a1a1a]'
+    `px-3 py-2 text-sm font-bold uppercase tracking-widest transition-colors duration-300 ${
+      isActive ? 'text-white border-b-2 border-white' : 'text-gray-400 hover:text-white'
     }`;
     
   const mobileNavLinkClasses = ({ isActive }: { isActive: boolean }) =>
-    `block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300 ${
-      isActive ? 'bg-[#0B0B0B] text-[#ffbb98]' : 'text-[#F5F5F5] hover:bg-[#1a1a1a]'
+    `block px-3 py-2 text-lg font-bold uppercase tracking-wide transition-colors duration-300 ${
+      isActive ? 'bg-white/10 text-white' : 'text-gray-400 hover:text-white hover:bg-white/5'
     }`;
 
   const navClasses = `sticky top-0 z-50 transition-all duration-300 ${
     (!isHomePage || isScrolled || isOpen) 
-      ? 'bg-[#0B0B0B]/80 backdrop-blur-sm shadow-lg shadow-black/50' 
-      : 'bg-transparent shadow-none'
+      ? 'bg-black/95 backdrop-blur-sm border-b border-gray-800' 
+      : 'bg-transparent'
   }`;
 
   return (
@@ -57,38 +52,42 @@ const Header: React.FC = () => {
             </NavLink>
           </div>
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
+            <div className="ml-10 flex items-baseline space-x-8">
               <NavLink to="/" className={navLinkClasses}>Home</NavLink>
-              <NavLink to="/product" className={navLinkClasses}>Product</NavLink>
-              <NavLink to="/blog" className={navLinkClasses}>Blog</NavLink>
-              <NavLink to="/about" className={navLinkClasses}>About</NavLink>
-              <NavLink to="/contact" className={navLinkClasses}>Contact</NavLink>
+              <NavLink to="/product" className={navLinkClasses}>Shop</NavLink>
+              <NavLink to="/about" className={navLinkClasses}>Mission</NavLink>
+              <NavLink to="/blog" className={navLinkClasses}>Journal</NavLink>
             </div>
           </div>
           <div className="hidden md:block">
             <div className="flex items-center">
               <div className="ml-4">
                 {user ? (
-                  <div className="flex items-center space-x-4">
-                    <span className="text-sm text-white max-w-xs truncate" title={profile?.full_name || ''}>{profile?.full_name}</span>
+                  <div className="flex items-center space-x-6">
+                    <span className="text-xs font-bold uppercase tracking-widest text-gray-400 max-w-xs truncate" title={profile?.full_name || ''}>{profile?.full_name}</span>
                     <a
                       href="https://www.amazon.in/dp/B0CW2ZXDHZ"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-[#0B0B0B] bg-[#ffbb98] hover:bg-[#f8a87e] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#0B0B0B] focus:ring-[#ffbb98] transition-transform duration-300 hover:scale-105"
+                      className="inline-flex items-center px-6 py-2 text-sm font-bold uppercase tracking-widest text-black bg-white hover:bg-gray-200 transition-colors duration-300"
                     >
                       Shop Now
                     </a>
                   </div>
                 ) : (
-                  <>
-                    <NavLink to="/signin" className="text-[#F5F5F5] hover:bg-[#1a1a1a] px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300">
-                      Sign In
+                  <div className="flex items-center space-x-4">
+                    <NavLink to="/signin" className="text-sm font-bold uppercase tracking-wider text-gray-400 hover:text-white transition-colors">
+                      Log In
                     </NavLink>
-                    <NavLink to="/signup" className="ml-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-[#0B0B0B] bg-[#ffbb98] hover:bg-[#f8a87e] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#0B0B0B] focus:ring-[#ffbb98] transition-transform duration-300 hover:scale-105">
-                      Sign Up
-                    </NavLink>
-                  </>
+                    <a
+                      href="https://www.amazon.in/dp/B0CW2ZXDHZ"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center px-6 py-2 border border-white text-sm font-bold uppercase tracking-widest text-white hover:bg-white hover:text-black transition-all duration-300"
+                    >
+                      Get Yours
+                    </a>
+                  </div>
                 )}
               </div>
             </div>
@@ -97,7 +96,7 @@ const Header: React.FC = () => {
             <button
               onClick={() => setIsOpen(!isOpen)}
               type="button"
-              className="bg-[#1a1a1a] inline-flex items-center justify-center p-2 rounded-md text-[#a0a0a0] hover:text-white hover:bg-[#2a2a2a] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#0B0B0B] focus:ring-white"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white focus:outline-none"
               aria-controls="mobile-menu"
               aria-expanded="false"
             >
@@ -117,40 +116,41 @@ const Header: React.FC = () => {
       </div>
 
       {isOpen && (
-        <div className="md:hidden" id="mobile-menu">
+        <div className="md:hidden bg-black border-b border-gray-800" id="mobile-menu">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <NavLink to="/" className={mobileNavLinkClasses} onClick={() => setIsOpen(false)}>Home</NavLink>
-            <NavLink to="/product" className={mobileNavLinkClasses} onClick={() => setIsOpen(false)}>Product</NavLink>
-            <NavLink to="/blog" className={mobileNavLinkClasses} onClick={() => setIsOpen(false)}>Blog</NavLink>
-            <NavLink to="/about" className={mobileNavLinkClasses} onClick={() => setIsOpen(false)}>About</NavLink>
-            <NavLink to="/contact" className={mobileNavLinkClasses} onClick={() => setIsOpen(false)}>Contact</NavLink>
-            <div className="border-t border-[#333333] my-2"></div>
+            <NavLink to="/product" className={mobileNavLinkClasses} onClick={() => setIsOpen(false)}>Shop</NavLink>
+            <NavLink to="/about" className={mobileNavLinkClasses} onClick={() => setIsOpen(false)}>Mission</NavLink>
+            <NavLink to="/blog" className={mobileNavLinkClasses} onClick={() => setIsOpen(false)}>Journal</NavLink>
+            <div className="border-t border-gray-800 my-4 pt-4"></div>
             {user ? (
                <>
                 <div className="px-3 py-2">
-                    <p className="text-base font-medium text-white truncate" title={profile?.full_name || ''}>{profile?.full_name}</p>
+                    <p className="text-base font-bold text-white truncate" title={profile?.full_name || ''}>{profile?.full_name}</p>
                 </div>
                 <a
                   href="https://www.amazon.in/dp/B0CW2ZXDHZ"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setIsOpen(false)}
-                  className="mt-2 block w-full text-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-[#0B0B0B] bg-[#ffbb98] hover:bg-[#f8a87e]"
+                  className="mt-2 block w-full text-center px-4 py-3 text-base font-bold uppercase tracking-widest text-black bg-white hover:bg-gray-200"
                 >
                   Shop Now
                 </a>
                </>
             ) : (
-               <>
-                 <NavLink to="/signin" className={mobileNavLinkClasses} onClick={() => setIsOpen(false)}>Sign In</NavLink>
-                 <NavLink 
-                   to="/signup" 
+               <div className="space-y-3 px-2">
+                 <NavLink to="/signin" className="block text-base font-bold text-gray-400 hover:text-white" onClick={() => setIsOpen(false)}>Log In</NavLink>
+                 <a 
+                   href="https://www.amazon.in/dp/B0CW2ZXDHZ" 
+                   target="_blank"
+                   rel="noopener noreferrer"
                    onClick={() => setIsOpen(false)}
-                   className="mt-2 block w-full text-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-[#0B0B0B] bg-[#ffbb98] hover:bg-[#f8a87e]"
+                   className="block w-full text-center px-4 py-3 border border-white text-base font-bold uppercase tracking-widest text-white hover:bg-white hover:text-black"
                  >
-                   Sign Up
-                 </NavLink>
-               </>
+                   Get Yours
+                 </a>
+               </div>
             )}
           </div>
         </div>
