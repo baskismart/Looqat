@@ -2,7 +2,7 @@
 import React, { useState, useRef } from 'react';
 
 const productImages = [
-    "https://i.pinimg.com/736x/3d/94/45/3d94458313d8054d09b494701556119b.jpg",
+    "https://i.pinimg.com/736x/88/ef/fc/88effc70a9c7ae47e186f3d7dfb2f25c.jpg",
     "https://m.media-amazon.com/images/I/71haP0VsZDL._SL1500_.jpg",
     "https://m.media-amazon.com/images/I/71jp58kMwYL._SL1500_.jpg",
     "https://m.media-amazon.com/images/I/71auSmGPByL._SL1500_.jpg",
@@ -65,7 +65,7 @@ const ProductPage: React.FC = () => {
     };
 
     return (
-        <div className="bg-black text-white min-h-screen">
+        <div className="bg-black text-white min-h-screen pt-24">
             {/* Breadcrumbs */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
                 <nav className="flex text-xs font-bold uppercase tracking-widest text-gray-500">
@@ -73,7 +73,7 @@ const ProductPage: React.FC = () => {
                     <span className="mx-2">/</span>
                     <a href="/product" className="hover:text-white transition-colors">Shop</a>
                     <span className="mx-2">/</span>
-                    <span className="text-white">Stealth Series</span>
+                    {/*<span className="text-white">Stealth Series</span>*/}
                 </nav>
             </div>
 
@@ -126,7 +126,7 @@ const ProductPage: React.FC = () => {
                         <div className="mb-8 border-b border-gray-800 pb-8">
                             <h1 className="text-4xl md:text-5xl font-black italic tracking-tighter uppercase mb-2">LOOQAT Stealth 1.2L</h1>
                             <div className="flex items-center space-x-4 mb-6">
-                                <span className="text-2xl font-bold">₹2,499</span>
+                                <span className="text-2xl font-bold">₹1,248</span>
                                 <span className="px-2 py-1 bg-white text-black text-xs font-black uppercase tracking-widest">Best Seller</span>
                             </div>
                             <p className="text-gray-400 font-body leading-relaxed text-base">
@@ -143,11 +143,11 @@ const ProductPage: React.FC = () => {
                                 rel="noopener noreferrer"
                                 className="w-full block text-center bg-white text-black font-black uppercase tracking-[0.2em] py-5 hover:bg-gray-200 transition-colors text-sm"
                             >
-                                Buy on Amazon
+                                Buy Now
                             </a>
                             <div className="mt-4 flex items-center justify-center space-x-2 text-xs font-bold text-gray-500 uppercase tracking-widest">
                                 <svg className="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                                <span>Free Shipping via Prime</span>
+                                <span>Free Shipping For All</span>
                             </div>
                         </div>
 
@@ -236,7 +236,7 @@ const ProductPage: React.FC = () => {
                 {/* Spec Comparison */}
                 <div className="mb-24">
                     <h2 className="text-3xl font-black uppercase text-center mb-12 tracking-tight">The Advantage</h2>
-                    <div className="overflow-hidden border border-gray-800">
+                    <div className="overflow-x-auto border border-gray-800">
                         <table className="min-w-full divide-y divide-gray-800">
                             <thead className="bg-gray-900">
                                 <tr>

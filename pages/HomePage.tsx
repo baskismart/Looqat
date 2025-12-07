@@ -138,11 +138,11 @@ const HomePage: React.FC = () => {
        {/* CTA Banner */}
        <section className="relative py-28 bg-white overflow-hidden">
            <div className="absolute inset-0">
-                <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=2070&auto=format&fit=crop" alt="Gym Texture" className="w-full h-full object-cover opacity-10 grayscale"/>
+                <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=2070&auto=format&fit=crop" alt="Gym Texture" className="w-full h-full object-cover opacity-50 grayscale"/>
            </div>
            <div className="relative max-w-7xl mx-auto px-4 text-center">
                 <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter text-black mb-8 leading-none">
-                    Your Gym. Your Style.<br/>Your LOOQAT.
+                    Your Gym.<br/> Your Style.<br/>Your LOOQAT.
                 </h2>
                 <div className="mt-10">
                     <a href="https://www.amazon.in/dp/B0CW2ZXDHZ" target="_blank" rel="noopener noreferrer" className="inline-block px-12 py-4 border-2 border-black bg-black text-white text-sm font-bold uppercase tracking-[0.2em] hover:bg-transparent hover:text-black transition-all">
