@@ -12,20 +12,27 @@ const Feature: React.FC<{ icon: React.ReactNode; title: string; description: str
   </div>
 );
 
-const BlogPreview: React.FC<{ title: string; category: string; image: string; id: number }> = ({ title, category, image, id }) => (
-    <Link to={`/blog/${id}`} className="group cursor-pointer block">
-        <div className="relative overflow-hidden h-72 w-full bg-gray-900">
-            <img src={image} alt={title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter grayscale group-hover:grayscale-0" />
-            <div className="absolute top-4 left-4 bg-black/80 backdrop-blur-sm px-3 py-1">
-                <span className="text-[10px] font-bold text-white uppercase tracking-widest">{category}</span>
-            </div>
-        </div>
-        <div className="mt-5">
-            <h3 className="text-lg font-bold text-white uppercase tracking-wide group-hover:text-gray-300 transition-colors">{title}</h3>
-        </div>
-    </Link>
+const BlogPreview: React.FC<{ title: string; category: string; image: string; slug: string }> = ({ title, category, image, slug }) => (
+  <Link to={`/blog/${slug}`} className="group cursor-pointer block">
+    <div className="relative overflow-hidden h-72 w-full bg-gray-900">
+      <img
+        src={image}
+        alt={title}
+        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter grayscale group-hover:grayscale-0"
+      />
+      <div className="absolute top-4 left-4 bg-black/80 backdrop-blur-sm px-3 py-1">
+        <span className="text-[10px] font-bold text-white uppercase tracking-widest">
+          {category}
+        </span>
+      </div>
+    </div>
+    <div className="mt-5">
+      <h3 className="text-lg font-bold text-white uppercase tracking-wide group-hover:text-gray-300 transition-colors">
+        {title}
+      </h3>
+    </div>
+  </Link>
 );
-
 
 const HomePage: React.FC = () => {
   return (
@@ -138,11 +145,11 @@ const HomePage: React.FC = () => {
        {/* CTA Banner */}
        <section className="relative py-28 bg-white overflow-hidden">
            <div className="absolute inset-0">
-                <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=2070&auto=format&fit=crop" alt="Gym Texture" className="w-full h-full object-cover opacity-50 grayscale"/>
+                <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=2070&auto=format&fit=crop" alt="Gym Texture" className="w-full h-full object-cover opacity-10 grayscale"/>
            </div>
            <div className="relative max-w-7xl mx-auto px-4 text-center">
                 <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter text-black mb-8 leading-none">
-                    Your Gym.<br/> Your Style.<br/>Your LOOQAT.
+                    Your Gym. Your Style.<br/>Your LOOQAT.
                 </h2>
                 <div className="mt-10">
                     <a href="https://www.amazon.in/dp/B0CW2ZXDHZ" target="_blank" rel="noopener noreferrer" className="inline-block px-12 py-4 border-2 border-black bg-black text-white text-sm font-bold uppercase tracking-[0.2em] hover:bg-transparent hover:text-black transition-all">
@@ -160,26 +167,26 @@ const HomePage: React.FC = () => {
                    <Link to="/blog" className="hidden md:block text-gray-500 hover:text-white uppercase font-bold text-xs tracking-widest transition-colors">View All Articles &rarr;</Link>
                </div>
                
-               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                   <BlogPreview 
-                        id={1}
-                        title="Hydration Hacks for Gym Rats"
-                        category="Performance"
-                        image="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=2069&auto=format&fit=crop"
-                   />
-                   <BlogPreview 
-                        id={2}
-                        title="Why Staying Cool Boosts Workout Performance"
-                        category="Science"
-                        image="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?q=80&w=2069&auto=format&fit=crop"
-                   />
-                   <BlogPreview 
-                        id={3}
-                        title="The Perfect Gym Accessory You Didn’t Know You Needed"
-                        category="Lifestyle"
-                        image="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop"
-                   />
-               </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <BlogPreview
+      slug="hydration-hacks-for-gym-rats"
+      title="Hydration Hacks for Gym Rats"
+      category="Performance"
+      image="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=2069&auto=format&fit=crop"
+    />
+    <BlogPreview
+      slug="why-staying-cool-boosts-workout-performance"
+      title="Why Staying Cool Boosts Workout Performance"
+      category="Science"
+      image="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?q=80&w=2069&auto=format&fit=crop"
+    />
+    <BlogPreview
+      slug="the-perfect-gym-accessory-you-didnt-know-you-needed"
+      title="The Perfect Gym Accessory You Didn’t Know You Needed"
+      category="Lifestyle"
+      image="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop"
+    />
+  </div>
                <div className="mt-8 md:hidden text-center">
                     <Link to="/blog" className="text-gray-500 hover:text-white uppercase font-bold text-xs tracking-widest">View All Articles &rarr;</Link>
                </div>
